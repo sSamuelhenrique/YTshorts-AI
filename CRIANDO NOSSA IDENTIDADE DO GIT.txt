@@ -1,0 +1,81 @@
+CRIANDO NOSSA IDENTIDADE DO GIT
+git config --global user.name "Samuel Henrique"
+git config --global user.email samueel.jpg21@gmail.com
+
+VENDO CONFIGURAÇÕES JA FEITAS
+git config --list
+
+MANUAL DO GIT
+git help
+
+INICIALIZA UM REPOSITORIO EM UM DIRETORIO
+abre o direitorio que deseja atraves do cd e use
+git init
+
+ADICIONA AS ALTERAÇÕES FEITA EM TODOS OS ARQUIVOS DO DIRETORIO
+ADICIONA UM COMENTARIO NAQUELA ALTERAÇÃO REFERENTE
+git add . (pode adicionar por extensao *.jpg)
+git commit -m "initial commit"
+
+MOSTRA O HISTORICO commits
+git log
+HISTORICO DESDE UMA EPOCA
+git log --since=2023-07-19
+HISTORICO ANTES DA EPOCA CITADA
+git log --until=2023-07-19
+HISTORICO PELO AUTOR
+git log --author=Samuel
+HISTORICO PELA MENSAGEM DO COMMIT
+git log --grep="initial"z
+
+
+REMOVENDO UM ARQUIVO DA FILA DE COMMIT 
+git rm --cached nomedoarquivo
+logo apoes a remoção é preciso novamente add ele e depois fazer o commit
+
+MOSTRA A DIFERENÇA DO DIRETORIO PREPARADO(staged) E A VERSAO ANTERIOR DO REPOSITORIO GIT
+git diff 
+
+REMOVE ARQUIVOS
+git rm nome do arquivo
+
+RENOMEANDO ARQUIVOS / MOVENDO ARQUIVOS PARA OUTRO LUGAR
+git mv nomedoarquivo novonomedoarquivo
+git mv nomedoarquivo pastanovadoarquivo
+
+RESTAURA ARQUIVOS QUE JA FORAM ALTERADOS 
+git restore --stage nomedoarquivo1 (restaura depois do git add)
+git restore nomedoarquivo1 (as alterações adicionadas nao sao mais adicionadas, porem ainda está alterado e com o git restore as alterações sao desfeitas)
+git restore --stage . restaura todos os arquivos (ponto (.) significa todos);
+
+ALTERA O COMMIT ANTERIOR 
+git commit --amend -m "novo commit alterado"
+
+RESTAURA O ARQUIVO COM O HASH ESPECIFICO, LOGO RESTAURA O ARQUIVO NAQUELE PONTO DA HISTORIA 
+git checkout (parte do hash do commit especifico) -- (arquivo que deseja restaurar)
+
+EXCLUI DEFINITIVO OS ARQUIVOS QUE AINDA NAO FORAM ADICIONADOS NA STAGIN AREA 
+git clean -f
+
+REVERTENDO UM COMMIT (RECUPERA OS ARQUIVOS TAMBEM)
+git revert HEAD~numeraçao onde aquele commit se encontra
+
+MOSTRA ONDE FOI FEITA ALTERAÇÕES 
+git diff ou git show <parte do hash do commit>
+
+ADICIONAR E COMMITAR AO MESMO TEMPO, DEPOIS QUE JA FOI ADICIONADO (CASO O ARQUIVO JA TENHA SIDO ADICIONADO E COMMITADO, POREM DEPOIS FOI ALTERADO, EXISTE UM SHORTHAND PARA ADICIONAR NOVAMENTE E COMMITAR)
+git commit -am "commmit novo"
+
+IGNORANDO ARQUIVOS E DIRETORIOS INDESEJADOS 
+git 
+
+
+CRIO UMA CHAVE SSH PARA MEU PC TER ACESSO O GITHUB
+(link do passo a passo
+https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows)
+CRIANDO UMA KEY SSH
+ssh-keygen -t rsa -b 4096 -C "email do github"
+PEGANDO A KEY SSH 
+cat id_rsa.pub
+
+DEPOIS ADICIONE SUA SSH AO AGENTE SSH (atraves do link)
