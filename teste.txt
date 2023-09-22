@@ -1,0 +1,68 @@
+https://biblioteca.rocketseat.com.br/
+/* fetch('https://api.github.com/users/sSamuelhenrique')
+    .then(response => response.json())
+    .then(data => fetch(data.repos_url))
+    .catch(err => console.log(err));
+
+    import axios from "axios" importação da biblioteca axios
+
+atraves do axios.get('') estou buscando os dados da api do github
+    axios.get('https://api.github.com/users/sSamuelhenrique')
+    .then(response => axios.get(response.data.repos_url))caso a busca de dados anterior tenha sido efetivada com sucesso
+    a arrow function response recebe como parametro todos os dados da busca e executa uma nova busca
+    atraves do axios.get(response.data.repos_url)
+    buscando os dados que estão no objeto data na propriedade repos_url
+    .then(repos => console.log(repos.data))
+    caso a busca de dados anterios tenha dado certo, a arrow function repos recebe
+    como argumento os dados da busca e imprime a propriedade data
+    .catch(err => console.log(err))  */
+/* 
+    import axios from "axios";
+
+    // o Promise.all irá criar um array com todas as promessas 
+    Promise.all([
+         //axios.get irá fazer uma busca na api do git e ira retornar o resultado 
+        axios.get('https://api.github.com/users/sSamuelhenrique'),
+        axios.get('https://api.github.com/users/sSamuelhenrique/repos')
+    ])
+//caso a busca dos axios.get seja efetuada com sucesso o then irá executar a 
+//arrow function que passa como argumento os resultados da axios.get
+    .then(responses => {
+        console.log(responses[0].data.login)
+        console.log(responses[1].data.length)
+    })
+    .catch(err => console.log(err)) */
+
+    async function start(){
+        try{
+            const response = await fetch('https://api.github.com/users/sSamuelhenrique');
+            await console.log(response);
+            const user = await response.json();
+            const userRepos = await fetch(user.repos_url);
+            await console.log(userRepos);
+            const repos = await userRepos.json();
+            console.log(repos)
+
+        }catch(err){
+            console.log(err)
+        }
+    }
+
+    import axios from "axios"
+
+
+async function teste(){
+    try{
+        const API = await axios.get('https://api.github.com/users/sSamuelhenrique');
+        console.log(API)
+        const searchData = await axios.get(API.data.repos_url);
+        console.log(searchData)
+        console.log(searchData.data);
+
+    }catch(e){
+        console.log(e)
+    }finally{
+        console.log('finalizado')
+    }
+}
+teste()
